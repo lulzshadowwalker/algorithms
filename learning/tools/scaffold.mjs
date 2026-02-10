@@ -94,12 +94,12 @@ async function createCpp(projectRoot, name) {
 
   await writeFile(
     path.join(base, "main.cpp"),
-    `#include <iostream>\n\nint main() {\n    std::cout << "${name} cpp" << std::endl;\n    return 0;\n}\n`
+    `#include <stdio>\n\nint main() {\n    printf("${name} cpp\n");\n    return 0;\n}\n`
   );
 
   await writeFile(
     path.join(base, "Makefile"),
-    `CXX ?= c++\nCXXFLAGS ?= -std=c++20 -Wall -Wextra -Wpedantic -O0 -g\nFILE ?= main.cpp\nOUT := build/$(FILE:.cpp=)\n\nall: run\n\nbuild:\n\tmkdir -p build\n\t$(CXX) $(CXXFLAGS) $(FILE) -o $(OUT)\n\nrun: build\n\t./$(OUT)\n\nclean:\n\trm -rf build\n`
+    `CXX ?= c++\nCXXFLAGS ?= -std=c++20 -Wall -Wextra -Wpedantic -O0 -g\nFILE ?= main.cpp\nOUT := build/$(FILE:.cpp=)\n\n.PHONY: all build run clean\n\nall: run\n\nbuild:\n\tmkdir -p build\n\t$(CXX) $(CXXFLAGS) $(FILE) -o $(OUT)\n\nrun: build\n\t./$(OUT)\n\nclean:\n\trm -rf build\n`
   );
 }
 

@@ -1,0 +1,16 @@
+{
+  "name": "learning",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "create": "node tools/scaffold.mjs",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "typecheck": "tsc -p tsconfig.base.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.8"
+  }
+}

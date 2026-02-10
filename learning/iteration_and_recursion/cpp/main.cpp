@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <vector>
 
 int recurse(int n);
 int fib(int n);
 int iterativeFib(int n);
+int iterativeFib2(int n);
 int tailRecurse(int n, int res);
 
 int main()
@@ -10,17 +12,14 @@ int main()
     printf("iteration_and_recursion cpp\n");
 
     printf("=== Recursion\n");
-    printf("recurse(5) = %d\n", recurse(5));
-
-    printf("\n");
+    printf("recurse(5) = %d\n\n", recurse(5));
 
     printf("=== Tail Recursion\n");
-    printf("tailRecurse(5) = %d\n", tailRecurse(5, 0));
-
-    printf("\n");
+    printf("tailRecurse(5) = %d\n\n", tailRecurse(5, 0));
 
     printf("fib(10) = %d\n", fib(10));
-    printf("iterativeFib(10) = %d\n", iterativeFib(10));
+    printf("iterativeFib(10) = %d\n\n", iterativeFib(10));
+    printf("iterativeFib2(10) = %d\n", iterativeFib2(10));
     return 0;
 }
 
@@ -86,4 +85,18 @@ int iterativeFib(int n)
     }
 
     return curr;
+}
+
+int iterativeFib2(int n)
+{
+    std::vector<int> seq = {0, 1}; // initialized with 0 and 1 by definition
+    for (int i = 2; i <= n; ++i)
+        seq.push_back(seq.at(i - 1) + seq.at(i - 2));
+
+    for (int el : seq)
+        printf("%d, ", el);
+
+    printf("\n");
+
+    return seq.at(n);
 }

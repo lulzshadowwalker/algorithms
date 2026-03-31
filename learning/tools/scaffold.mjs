@@ -157,7 +157,7 @@ export default defineConfig({
 
   await writeFile(
     path.join(base, "src", "main.ts"),
-    `import { enqueue } from "./example.ts";\n\nconst result = enqueue([1, 2], 3);\nconsole.log(result);\n`
+    `import { enqueue } from "./example.ts";\nimport { describe, it, expect } from "vitest";\n\nconst result = enqueue([1, 2], 3);\nconsole.log(result);\n`
   );
 
   await writeFile(
